@@ -1,0 +1,54 @@
+---
+- name: Create application directory
+  file:
+    path:  "{{ lirc_web_app_path }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode:  0755
+  become: true
+
+- name: Deploy Dockerfile
+  template:
+    src:  Dockerfile
+    dest: "{{ lirc_web_app_path }}/Dockerfile"
+  register: dockerfile
+
+- name: Deploy lirc-web configuration
+  template:
+    src:  config.json
+    dest: "{{ lirc_web_app_path }}"
+  register: lircwebconfig
+
+- name: Deploy lirc-web control enumeration patch
+  copy:
+    src:  lirc_node.js.diff
+    dest: "{{ lirc_web_app_path }}"
+  register: lircwebpatch
+
+- name: Build lirc-web image
+  docker_image:
+    name: elgeeko1/lirc-web:ansible
+    source: build
+    build:
+      path: "{{ lirc_web_app_path }}"
+      pull: true
+    state: present
+    force_source: "{{ dockerfile.changed or lircwebconfig.changed or lircwebpatch.changed }}"
+  register: dockerimage
+
+- name: Start lirc-web docker container
+  docker_container:
+    name: lirc-web
+    image: elgeeko1/lirc-web:ansible
+    state: started
+    restart: "{{ dockerimage.changed }}"
+    restart_policy: unless-stopped
+    volumes:
+      - "{{ lirc_socket }}:{{ lirc_socket }}"
+      - "{{ lirc_web_app_path }}/config.json:{{ lirc_web_node_path }}/config.json:ro"
+      - /etc/lirc/lircd.conf.d:/etc/lirc/lircd.conf.d:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    published_ports:
+      - 3000:3000

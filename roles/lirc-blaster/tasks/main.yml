@@ -1,0 +1,49 @@
+---
+- name: Install apt package lirc
+  apt:
+    pkg:   lirc
+    state: latest
+  become: true
+
+- name: Deploy lirc remote configuration Yamaha RAS13
+  copy:
+    src:   yamaha-ras13.lircd.conf
+    dest:  /etc/lirc/lircd.conf.d/
+    owner: root
+    group: root
+    mode:  0655
+  become: true
+  register: remoteconfig
+
+- name: Disable devinput lirc configuration
+  file:
+    path:  /etc/lirc/lircd.conf.d/devinput.lircd.conf.dist
+    state: absent
+  become: true
+
+- name: Deploy lircd.service
+  template:
+    src:   lircd.service
+    dest:  /lib/systemd/system/lircd.service
+    owner: root
+    group: root
+    mode:  0655
+  become: true
+  register: licrdservice
+
+- name: Enable lircd service
+  service:
+    name:  lircd
+    state: "{{ (licrdservice.changed or remoteconfig.changed) | ternary('restarted', 'started') }}"
+  become: true
+
+# wtf not sure why but changing device serial number
+# or configuration doesn't work with a service restart
+# alone, so just whack the whole damn thing.
+#
+# Ain't nobody got tiiiime to debug this shit.
+- name: Reboot if service configuration changed
+  reboot:
+    msg: "Ansible reboot"
+  become: true
+  when: licrdservice.changed

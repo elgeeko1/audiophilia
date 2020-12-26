@@ -1,0 +1,6 @@
+lirc_socket: "/run/lirc/lircd"
+lirc_web_node_path: "/usr/local/lib/node_modules/lirc_web"
+lirc_web_app_path:  "/lirc-web"
+lirc_remote_id: "Yamaha-RAS13"
+
+default_timezone: "US/Pacific"

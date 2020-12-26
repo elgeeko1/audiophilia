@@ -1,0 +1,12 @@
+[Unit]
+Documentation=https://www.npmjs.com/package/lirc_web
+Description=lircd web service
+Wants=lircd-setup.service
+After=network.target lircd-setup.service
+
+[Service]
+Type=simple
+ExecStart=lirc_web
+
+[Install]
+WantedBy=multi-user.target

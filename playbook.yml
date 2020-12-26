@@ -1,0 +1,12 @@
+# Configure a stereo receiver using an IR blaster
+---
+- hosts: wormhole
+  gather_facts: true
+  roles:
+    - name: lirc-blaster role
+      role: lirc-blaster
+      vars:
+        LIRC_BLASTER_SERIAL: "DN028UT5"
+
+    - name: lirc-web role
+      role: lirc-web
