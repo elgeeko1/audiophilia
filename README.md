@@ -4,7 +4,7 @@ An example web service that can be configured to control devices, such as stereo
 
 You will need to customize this for your setup -- this won't work out of the gate. Time to put your thinking cap on.
 
-The code in this repository provisions a Linux computer with a web server that transmits IR signals over a USB transmitter ('blaster).
+The code in this repository provisions a Linux computer with a web server that transmits IR signals over a USB transmitter ('blaster). I've tested this on x86_64 but presumably this should work on ARM targets such as a Raspberry Pi.
 
 
 ## Why this Exists
@@ -17,7 +17,8 @@ My audio setup includes a USB output device that doesn't have digital volume con
 Ansible scripts to configure a Linux target with:
 
 - Drivers for an IR transmitter ('blaster') via lirc
-- Node server and module lirc_web to translate web requests to IR commands
+- Dockerized node server and module lirc_web to translate web requests to IR commands
+- An example remote code configuration for a Yahama RAS13 remote (AS-301 and AS-501 amplifiers)
 
 
 ## What this Isn't

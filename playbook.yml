@@ -3,6 +3,9 @@
 - hosts: wormhole
   gather_facts: true
   roles:
+    - name: docker role
+      role: docker
+
     - name: lirc-blaster role
       role: lirc-blaster
       vars:

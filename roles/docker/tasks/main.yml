@@ -1,0 +1,13 @@
+---
+- name: Install docker engine
+  include_tasks: docker-ce.yml
+
+# yes you really need to do this, since Ansible
+# connects over an SSH session, it's the most
+# sure-fire way to ensure permissions take effect
+# for something like docker that runs as a service.
+- name: Reboot on user group change
+  reboot:
+    msg: "Ansible reboot"
+  become: true
+  when: docker_group.changed
