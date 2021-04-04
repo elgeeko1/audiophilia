@@ -18,8 +18,11 @@ Ansible scripts to configure a Linux target with:
 
 - Drivers for an IR transmitter ('blaster') via lirc
 - Dockerized node server and module lirc_web to translate web requests to IR commands
-- An example remote code configuration for a Yahama RAS13 remote (AS-301 and AS-501 amplifiers)
+- Two remote code configurations:
+- - Yahama RAS-13 remote (AS-301 and AS-501 amplifiers)
+- - SMSL RC-1 remote (SMSL m500 and others)
 
+Optionally I included a Roon Server role but this is not required for the IR blaster.
 
 ## What this Isn't
 
