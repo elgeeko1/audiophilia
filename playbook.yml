@@ -1,6 +1,6 @@
 # Configure a stereo receiver using an IR blaster
 ---
-- hosts: wormhole
+- hosts: all
   gather_facts: true
   roles:
     - name: docker role
@@ -10,6 +10,8 @@
       role: lirc-blaster
       vars:
         LIRC_BLASTER_SERIAL: "DN028UT5"
+        LIRC_BLASTER_REMOTES:
+          - smsl-rc1.lircd.conf
 
     - name: lirc-web role
       role: lirc-web

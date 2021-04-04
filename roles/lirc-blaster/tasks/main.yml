@@ -5,19 +5,25 @@
     state: latest
   become: true
 
-- name: Deploy lirc remote configuration Yamaha RAS13
+- name: Deploy lirc remote configuration {{ item }}
   copy:
-    src:   yamaha-ras13.lircd.conf
+    src:   "{{ item }}"
     dest:  /etc/lirc/lircd.conf.d/
     owner: root
     group: root
     mode:  0655
   become: true
-  register: remoteconfig
+  with_items: "{{ LIRC_BLASTER_REMOTES }}"
 
-- name: Disable devinput lirc configuration
+- name: Disable devinput lirc configuration (dist)
   file:
     path:  /etc/lirc/lircd.conf.d/devinput.lircd.conf.dist
+    state: absent
+  become: true
+
+- name: Disable devinput lirc configuration (conf)
+  file:
+    path: /etc/lirc/lircd.conf.d/devinput.lircd.conf
     state: absent
   become: true
 
@@ -34,7 +40,7 @@
 - name: Enable lircd service
   service:
     name:  lircd
-    state: "{{ (licrdservice.changed or remoteconfig.changed) | ternary('restarted', 'started') }}"
+    state: restarted
   become: true
 
 # wtf not sure why but changing device serial number
