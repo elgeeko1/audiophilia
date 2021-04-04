@@ -1,0 +1,27 @@
+---
+- name: Create /etc/roon-server
+  file:
+    path: "/etc/roon-server"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode:  0775
+  become: true
+
+- name: Create /etc/roon-server/data
+  file:
+    path: "/etc/roon-server/data"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode:  0775
+  become: true
+
+- name: Create /etc/roon-server/music
+  file:
+    path: "/etc/roon-server/music"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode:  0775
+  become: true

@@ -1,0 +1,2 @@
+roon_server_name: "{{ inventory_hostname }}"
+roon_server_path: /etc/roon-server

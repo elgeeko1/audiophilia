@@ -1,6 +1,6 @@
 # Configure a stereo receiver using an IR blaster
 ---
-- hosts: all
+- hosts: stereo_blasters
   gather_facts: true
   roles:
     - name: docker role
@@ -15,3 +15,6 @@
 
     - name: lirc-web role
       role: lirc-web
+
+    - name: roon-server role
+      role: roon-server
