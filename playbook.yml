@@ -15,6 +15,3 @@
 
     - name: lirc-web role
       role: lirc-web
-
-    - name: roon-server role
-      role: roon-server
