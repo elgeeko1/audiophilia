@@ -21,7 +21,7 @@ Ansible scripts to configure a Linux target with:
 Maintained, expected to work, or documented.
 
 # Configuring
-See https://github.com/elgeeko1/elgeeko1-lirc-web-ansible for configuring
+See https://github.com/elgeeko1/elgeeko1-lirc-blaster-ansible for configuring
 lirc-web.
 
 # Hardware
