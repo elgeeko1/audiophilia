@@ -1,0 +1,4 @@
+---
+- src: https://github.com/elgeeko1/elgeeko1-docker-ansible
+  name: elgeeko1-docker-ansible
+  version: main

@@ -4,7 +4,7 @@
   gather_facts: true
   roles:
     - name: docker role
-      role: docker
+      role: elgeeko1-docker-ansible
 
     - name: lirc-blaster role
       role: lirc-blaster
