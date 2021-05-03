@@ -20,6 +20,10 @@ Ansible scripts to configure a Linux target with:
 ## What this Isn't
 Maintained, expected to work, or documented.
 
+# Configuring
+See https://github.com/elgeeko1/elgeeko1-lirc-web-ansible for configuring
+lirc-web.
+
 # Hardware
 - USB IR blaster: https://www.irblaster.info/usb_blaster.html
 
