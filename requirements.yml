@@ -2,3 +2,7 @@
 - src: https://github.com/elgeeko1/elgeeko1-docker-ansible
   name: elgeeko1-docker-ansible
   version: main
+
+- src: https://github.com/elgeeko1/elgeeko1-lirc-blaster-ansible
+  name: elgeeko1-lirc-blaster-ansible
+  version: main

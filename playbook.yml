@@ -7,7 +7,7 @@
       role: elgeeko1-docker-ansible
 
     - name: lirc-blaster role
-      role: lirc-blaster
+      role: elgeeko1-lirc-blaster-ansible
       vars:
         LIRC_BLASTER_SERIAL: "DN028UT5"
         LIRC_BLASTER_REMOTES:
