@@ -13,6 +13,3 @@
         LIRC_BLASTER_REMOTES:
           - smsl-rc1.lircd.conf
           - yamaha-ras13.lircd.conf
-
-    - name: lirc-web role
-      role: lirc-web

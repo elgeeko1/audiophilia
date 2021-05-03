@@ -1,7 +1,0 @@
-{
-  "server" : {
-    "port" : 3000,
-    "ssl" : false
-  },
-  "socket" : "{{ lirc_socket }}"
-}

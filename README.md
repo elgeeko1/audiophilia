@@ -3,7 +3,7 @@ An example web service that can be configured to control devices, such as stereo
 
 You will need to customize this for your setup -- this won't work out of the gate. Time to put your thinking cap on.
 
-The code in this repository provisions a Linux computer with a web server that transmits IR signals over a USB transmitter ('blaster). I've tested this on x86_64 but presumably this should work on ARM targets such as a Raspberry Pi.
+The code in this repository provisions a Linux computer with a web server that transmits IR signals over a USB transmitter ('blaster).
 
 ## Why this Exists
 My audio setup includes a USB output device that doesn't have digital volume control, which means I can only use the volume knob on my amplifier. And that's... way, over there. Unacceptable.

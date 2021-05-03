@@ -1,5 +1,5 @@
 all:
   hosts:
     stereo_blaster:
-      ansible_host: 192.168.1.2 # TODO: replace with the IP address of your host
-      ansible_user: root
+      ansible_host: 192.168.1.5 # TODO: replace with the IP address of your host
+      ansible_user: elgeeko
