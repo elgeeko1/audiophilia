@@ -5,7 +5,7 @@
     state: latest
   become: true
 
-- name: Deploy lirc remote configuration {{ item }}
+- name: Deploy lirc remote configuration
   copy:
     src:   "{{ item }}"
     dest:  /etc/lirc/lircd.conf.d/
