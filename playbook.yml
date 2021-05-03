@@ -1,6 +1,6 @@
 # Configure a stereo receiver using an IR blaster
 ---
-- hosts: stereo_blasters
+- hosts: stereo_blaster
   gather_facts: true
   roles:
     - name: docker role
